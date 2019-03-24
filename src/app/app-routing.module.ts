@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: './orders/orders.module#OrdersModule'
   },
   {
+    path: 'menu',
+    loadChildren: './menu/menu.module#MenuModule'
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'

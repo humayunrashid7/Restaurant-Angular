@@ -10,11 +10,16 @@ import { map } from 'rxjs/operators';
 })
 export class MainNavComponent {
 
+  constructor(private breakpointObserver: BreakpointObserver) {
+    this.opened = true;
+  }
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
-
+  opened: boolean;
+  // shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+  shouldRun = true;
 }
