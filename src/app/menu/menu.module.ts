@@ -4,12 +4,38 @@ import { CommonModule } from '@angular/common';
 import { MenuRoutingModule } from './menu-routing.module';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatGridListModule,
+  MatIconModule,
+  MatListModule,
+  MatSidenavModule,
+  MatToolbarModule
+} from '@angular/material';
+import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
+import { MenuSheeshaListComponent } from './menu-sheesha-list/menu-sheesha-list.component';
+import { MenuFoodListComponent } from './menu-food-list/menu-food-list.component';
+import { MenuDrinksListComponent } from './menu-drinks-list/menu-drinks-list.component';
 
 @NgModule({
-  declarations: [MenuListComponent, MenuItemComponent],
+  declarations: [
+    MenuListComponent,
+    MenuItemComponent,
+    MenuSidebarComponent,
+    MenuSheeshaListComponent,
+    MenuFoodListComponent,
+    MenuDrinksListComponent],
   imports: [
     CommonModule,
-    MenuRoutingModule
+    MenuRoutingModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatGridListModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
   ]
 })
 export class MenuModule { }

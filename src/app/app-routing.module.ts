@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: './menu/menu.module#MenuModule'
   },
   {
+    path: 'auth',
+    loadChildren: './auth/auth.module#AuthModule'
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'

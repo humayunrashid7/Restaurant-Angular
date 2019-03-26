@@ -1,11 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {MenuItemComponent} from './menu-item/menu-item.component';
+import {MenuSidebarComponent} from './menu-sidebar/menu-sidebar.component';
+import {MenuSheeshaListComponent} from './menu-sheesha-list/menu-sheesha-list.component';
+import {MenuDrinksListComponent} from './menu-drinks-list/menu-drinks-list.component';
+import {MenuFoodListComponent} from './menu-food-list/menu-food-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MenuItemComponent
+    component: MenuSidebarComponent,
+    children: [
+      {
+        path: 'sheesha',
+        component: MenuSheeshaListComponent
+      },
+      {
+        path: 'food',
+        component: MenuFoodListComponent
+      },
+      {
+        path: 'drinks',
+        component: MenuDrinksListComponent
+      }
+    ]
   }
 ];
 
