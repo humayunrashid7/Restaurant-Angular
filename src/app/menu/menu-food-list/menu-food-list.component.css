@@ -1,0 +1,28 @@
+.mat-card {
+  max-width: 300px;
+  margin: auto;
+}
+
+.mat-card-avatar {
+  background-image: url('http://buttermilkcafe.com/stage/wp-content/uploads/2017/03/wrap_icon.png');
+  background-size: cover;
+}
+
+.dinner {
+  background-image: url('https://cdn3.iconfinder.com/data/icons/summer-flat-colorful-long-shadow/614/1527_-_Food-512.png');
+  background-size: cover;
+}
+
+
+.mat-card-actions {
+  display: flex;
+}
+
+.mat-card-actions .flex-spacer {
+  width: 100%;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}

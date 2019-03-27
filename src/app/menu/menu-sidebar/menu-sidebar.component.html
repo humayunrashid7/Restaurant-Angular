@@ -1,0 +1,19 @@
+
+<mat-drawer-container class="example-container">
+  <mat-drawer class="side-nav-bar" mode="side" [(opened)]="opened">
+    <mat-toolbar></mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/menu/sheesha">Sheesha</a>
+      <a mat-list-item routerLink="/menu/food">Food</a>
+      <a mat-list-item routerLink="/menu/drinks">Drinks</a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar color="accent">
+      <span>Main Content</span>
+    </mat-toolbar>
+    <!--<ng-content></ng-content>-->
+    <!--<app-menu-list></app-menu-list>-->
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

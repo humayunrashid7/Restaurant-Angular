@@ -1,0 +1,31 @@
+<h2>Sheesha Menu:</h2>
+
+<mat-grid-list cols="4" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let item of items">
+    <mat-card>
+
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>{{ item.name }}</mat-card-title>
+        <mat-card-subtitle>{{ item.price }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <img mat-card-lg-image src="{{ item.imageUrl }}">
+
+      <mat-card-content>
+        <p> {{ item.description}}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <p>${{ item.price }}</p>
+        <div class="flex-spacer"></div>
+        <button mat-button color="primary"><mat-icon>add_shopping_cart</mat-icon></button>
+        <button mat-icon-button><mat-icon style="color: crimson">favorite_border</mat-icon></button>
+      </mat-card-actions>
+
+    </mat-card>
+  </mat-grid-tile>
+
+</mat-grid-list>
+
+

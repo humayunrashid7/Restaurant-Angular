@@ -1,0 +1,22 @@
+.mat-card {
+  max-width: 300px;
+  margin: auto;
+}
+
+.mat-card-avatar {
+  background-image: url('https://cdn1.iconfinder.com/data/icons/uae-cartoon-2/512/g16892-512.png');
+  background-size: cover;
+}
+
+.mat-card-actions {
+  display: flex;
+}
+
+.mat-card-actions .flex-spacer {
+  width: 100%;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
