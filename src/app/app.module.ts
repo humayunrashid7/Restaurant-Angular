@@ -15,6 +15,9 @@ import {MatCheckboxModule, MatListModule} from '@angular/material';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 
+import {AuthGuardService} from './auth/auth-guard.service';
+import {AuthService} from './auth/auth.service';
+
 
 
 @NgModule({
@@ -37,7 +40,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatCheckboxModule,
     LayoutModule
   ],
-  providers: [],
+  providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

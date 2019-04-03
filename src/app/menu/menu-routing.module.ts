@@ -4,6 +4,7 @@ import {MenuSidebarComponent} from './menu-sidebar/menu-sidebar.component';
 import {MenuSheeshaListComponent} from './menu-sheesha-list/menu-sheesha-list.component';
 import {MenuDrinksListComponent} from './menu-drinks-list/menu-drinks-list.component';
 import {MenuFoodListComponent} from './menu-food-list/menu-food-list.component';
+import {AuthGuardService} from '../auth/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -12,11 +13,13 @@ const routes: Routes = [
     children: [
       {
         path: 'sheesha',
-        component: MenuSheeshaListComponent
+        component: MenuSheeshaListComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'food',
-        component: MenuFoodListComponent
+        component: MenuFoodListComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'drinks',
