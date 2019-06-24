@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
 
 // Material section
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,7 +13,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatCheckboxModule, MatListModule} from '@angular/material';
-import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 
 import {AuthGuardService} from './auth/auth-guard.service';

@@ -34,6 +34,7 @@ export class AuthService {
   completeAuthentication(): Promise<void> {
     return this.manager.signinRedirectCallback().then(user => {
       this.user = user;
+      console.log(this.user);
     });
   }
 
@@ -41,12 +42,12 @@ export class AuthService {
 
 export function getClientSettings(): UserManagerSettings {
   return {
-    authority: 'https://localhost:44395/',
-    client_id: 'RestaurantSPA',
+    authority: 'https://dev-214009.okta.com',
+    client_id: '0oamy7heoa4aJ98ks356',
     redirect_uri: 'http://localhost:4200/auth/auth-callback',
     post_logout_redirect_uri: 'http://localhost:4200/',
     response_type: 'id_token token',
-    scope: 'openid profile api1',
+    scope: 'openid profile',
     filterProtocolClaims: true,
     loadUserInfo: true
   };
