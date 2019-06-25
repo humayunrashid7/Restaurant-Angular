@@ -14,12 +14,12 @@ const routes: Routes = [
       {
         path: 'sheesha',
         component: MenuSheeshaListComponent,
-        canActivate: [AuthGuardService]
+        // canActivate: [AuthGuardService]
       },
       {
         path: 'food',
         component: MenuFoodListComponent,
-        canActivate: [AuthGuardService]
+        // canActivate: [AuthGuardService]
       },
       {
         path: 'drinks',

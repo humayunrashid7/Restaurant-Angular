@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 
-// Material section
+/* Material section */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,9 +15,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatCheckboxModule, MatListModule} from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 
+/* AuthService */
 import {AuthGuardService} from './auth/auth-guard.service';
 import {AuthService} from './auth/auth.service';
+
+/* NgRx */
 import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
 
 
 
@@ -30,6 +35,11 @@ import {StoreModule} from '@ngrx/store';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      name: 'Restaurant App',
+      maxAge: 25,
+      logOnly: environment.production
+    }),
 
     // Material
     BrowserAnimationsModule,
