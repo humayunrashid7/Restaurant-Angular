@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItemBaseModel} from '../menu-item/menu-item.model';
+import {select, Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-menu-sheesha-list',
@@ -8,6 +9,8 @@ import {MenuItemBaseModel} from '../menu-item/menu-item.model';
 })
 export class MenuSheeshaListComponent implements OnInit {
 
+  toggleSheeshaImages: boolean;
+
   items: MenuItemBaseModel[] = [];
   sampleItem: MenuItemBaseModel;
   sampleItem2: MenuItemBaseModel;
@@ -15,7 +18,7 @@ export class MenuSheeshaListComponent implements OnInit {
   sampleItem4: MenuItemBaseModel;
   sampleItem5: MenuItemBaseModel;
 
-  constructor() {
+  constructor(private store: Store<any>) {
     this.sampleItem = new MenuItemBaseModel();
     this.sampleItem.id = 1;
     this.sampleItem.type = 1;
@@ -29,8 +32,7 @@ export class MenuSheeshaListComponent implements OnInit {
     this.sampleItem2.type = 1;
     this.sampleItem2.name = 'Afzal Kiwi Paan';
     this.sampleItem2.description = 'Flavoured sheesha (water pipe) with select herbal flavours.';
-    this.sampleItem2.imageUrl = 'http://aladin.kiev.ua/images/stories/virtuemart/product/Tabak-Afzal-Kiwi-Fusion-Kivi-Fyyughn-' +
-      '50gr----------.jpg';
+    this.sampleItem2.imageUrl = 'http://www.soex.com/wp-content/uploads/2018/09/grape-fruit.jpg';
     this.sampleItem2.price = 18.99;
 
     this.sampleItem3 = new MenuItemBaseModel();
@@ -66,6 +68,21 @@ export class MenuSheeshaListComponent implements OnInit {
   }
 
   ngOnInit() {
+    // TODO: Unsubscribe
+    this.store.pipe(select('menu')).subscribe(
+      menu => {
+        if (menu) {
+          this.toggleSheeshaImages = menu.displaySheeshaImages;
+        }
+      }
+    );
+  }
+
+  checkChanged(value: boolean): void {
+    this.store.dispatch({
+      type: 'TOGGLE_SHEESHA_IMAGES',
+      payload: value
+    });
   }
 
 }

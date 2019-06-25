@@ -17,6 +17,8 @@ import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
 import { MenuSheeshaListComponent } from './menu-sheesha-list/menu-sheesha-list.component';
 import { MenuFoodListComponent } from './menu-food-list/menu-food-list.component';
 import { MenuDrinksListComponent } from './menu-drinks-list/menu-drinks-list.component';
+import {StoreModule} from '@ngrx/store';
+import {reducer} from './state/menu.reducer';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { MenuDrinksListComponent } from './menu-drinks-list/menu-drinks-list.com
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
+
+    StoreModule.forFeature('menu', reducer)
   ]
 })
-export class MenuModule { }
+export class MenuModule {}

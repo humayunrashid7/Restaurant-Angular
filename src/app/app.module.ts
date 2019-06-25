@@ -17,6 +17,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 
 import {AuthGuardService} from './auth/auth-guard.service';
 import {AuthService} from './auth/auth.service';
+import {StoreModule} from '@ngrx/store';
 
 
 
@@ -28,6 +29,7 @@ import {AuthService} from './auth/auth.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    StoreModule.forRoot({}),
 
     // Material
     BrowserAnimationsModule,

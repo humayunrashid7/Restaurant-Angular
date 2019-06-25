@@ -1,5 +1,10 @@
 <h2>Sheesha Menu:</h2>
 
+<div class="price-check">
+  <input type="checkbox" name="" value=""
+         (change)="checkChanged($event.target.checked)" [checked]="toggleSheeshaImages"> Display Sheesha Images<br>
+</div>
+
 <mat-grid-list cols="4" rowHeight="1:1">
   <mat-grid-tile *ngFor="let item of items">
     <mat-card>
@@ -7,13 +12,15 @@
       <mat-card-header>
         <div mat-card-avatar></div>
         <mat-card-title>{{ item.name }}</mat-card-title>
-        <mat-card-subtitle>{{ item.price }}</mat-card-subtitle>
+        <mat-card-subtitle>subtitle</mat-card-subtitle>
       </mat-card-header>
 
-      <img mat-card-lg-image src="{{ item.imageUrl }}">
+      <ng-container *ngIf="toggleSheeshaImages">
+        <img mat-card-lg-image src="{{ item.imageUrl }}">
+      </ng-container>
 
       <mat-card-content>
-        <p> {{ item.description}}</p>
+        <p> {{ item.description }}</p>
       </mat-card-content>
 
       <mat-card-actions>
