@@ -10,10 +10,10 @@
 
   <span class="spacer"></span>
 
-  <a routerLink="/auth/login">Login</a>
-  <a routerLink="/auth/signup">Sign Up</a>
+  <a *ngIf="!isLoggedIn()" (click)="login()">Login</a>
+  <a *ngIf="isLoggedIn()" (click)="login()">Logout</a>
 
-  <mat-icon>shopping_cart</mat-icon>
+  <button (click)="getClaims()"><mat-icon>shopping_cart</mat-icon></button>
 
 </mat-toolbar>
 
