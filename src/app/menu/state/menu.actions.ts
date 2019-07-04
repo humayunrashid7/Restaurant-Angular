@@ -5,7 +5,10 @@ export enum MenuActionTypes {
   ToggleSheeshaImages = '[Menu] Toggle Sheesha Images',
   SetCurrentSheeshaProduct = '[Menu] Set Current Sheesha Product',
   ClearCurrentSheeshaProduct = '[Menu] Clear Current Sheesha Product',
-  InitializeCurrentSheeshaProduct = '[Menu] Initialize Current Sheesha Product'
+  InitializeCurrentSheeshaProduct = '[Menu] Initialize Current Sheesha Product',
+  Load = '[Menu] Load',
+  LoadSuccess = '[Menu] Load Success',
+  LoadFail = '[Menu] Load Fail'
 }
 
 export class ToggleSheeshaImages implements Action {
@@ -35,7 +38,26 @@ export class InitializeCurrentSheeshaProduct implements Action {
   // No payload since the reducer will provide initial values
 }
 
+export class Load implements Action {
+  readonly type = MenuActionTypes.Load;
+}
+
+export class LoadSuccess implements Action {
+  readonly type = MenuActionTypes.LoadSuccess;
+
+  constructor(public payload: MenuItemBaseModel[]) {}
+}
+
+export class LoadFail implements Action {
+  readonly type = MenuActionTypes.LoadFail;
+
+  constructor(public payload: String) {}
+}
+
 export type MenuActions = ToggleSheeshaImages
   | SetCurrentSheeshaProduct
   | ClearCurrentSheeshaProduct
-  | InitializeCurrentSheeshaProduct;
+  | InitializeCurrentSheeshaProduct
+  | Load
+  | LoadSuccess
+  | LoadFail;

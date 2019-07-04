@@ -19,6 +19,8 @@ import { MenuFoodListComponent } from './menu-food-list/menu-food-list.component
 import { MenuDrinksListComponent } from './menu-drinks-list/menu-drinks-list.component';
 import {StoreModule} from '@ngrx/store';
 import {reducer} from './state/menu.reducer';
+import {EffectsModule} from '@ngrx/effects';
+import {MenuEffects} from './state/menu.effects';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import {reducer} from './state/menu.reducer';
     MatToolbarModule,
     MatListModule,
 
-    StoreModule.forFeature('menu', reducer)
+    StoreModule.forFeature('menu', reducer),
+    EffectsModule.forFeature([MenuEffects])
   ]
 })
 export class MenuModule {}

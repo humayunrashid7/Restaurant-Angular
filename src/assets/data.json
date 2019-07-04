@@ -1,0 +1,42 @@
+[
+  {
+    "id":1,
+    "type":1,
+    "name":"Afzal Paan Rasna",
+    "description":"Best paan in town with select herbal flavours.",
+    "imageUrl":"https://images-na.ssl-images-amazon.com/images/I/51ldJT40x1L.jpg",
+    "price":18.99
+  },
+  {
+    "id":2,
+    "type":1,
+    "name":"Afzal Kiwi Paan",
+    "description":"Flavoured sheesha (water pipe) with select herbal flavours.",
+    "imageUrl":"http://www.soex.com/wp-content/uploads/2018/09/grape-fruit.jpg",
+    "price":18.99
+  },
+  {
+    "id":3,
+    "type":1,
+    "name":"Double Apple",
+    "description":"Flavoured sheesha (water pipe) with select herbal flavours.",
+    "imageUrl":"https://www.hookahcompany.com/images_products/AF-250-Jar-TwoApples-hc-l.jpg",
+    "price":18.99
+  },
+  {
+    "id":4,
+    "type":1,
+    "name":"Premium Blue Mist",
+    "description":"Flavoured sheesha (water pipe) with select herbal flavours.",
+    "imageUrl":"https://www.hookahcompany.com/images_products/2587_big.jpg",
+    "price":18.99
+  },
+  {
+    "id":5,
+    "type":1,
+    "name":"Premium House Special",
+    "description":"The best in house made sheesha",
+    "imageUrl":"https://sc01.alicdn.com/kf/HTB1yuCjIpXXXXcvXXXXq6xXFXXXe/New-product-hot-sell-online-e-shisha.jpg",
+    "price":18.99
+  }
+]

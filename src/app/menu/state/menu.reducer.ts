@@ -40,6 +40,12 @@ export function reducer(state: MenuState = initialState, action: MenuActions): M
         }
       };
 
+    case MenuActionTypes.LoadSuccess:
+      return {
+        ...state,
+        allSheeshaMenuItems: action.payload
+      };
+
     default:
       return state;
   }

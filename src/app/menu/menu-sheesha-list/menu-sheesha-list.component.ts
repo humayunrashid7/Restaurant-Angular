@@ -3,6 +3,7 @@ import {MenuItemBaseModel} from '../menu-item/menu-item.model';
 import {select, Store} from '@ngrx/store';
 import * as fromMenu from '../state/menu.reducer';
 import * as menuActions from '../state/menu.actions';
+import {MenuService} from '../menu.service';
 
 @Component({
   selector: 'app-menu-sheesha-list',
@@ -12,15 +13,10 @@ import * as menuActions from '../state/menu.actions';
 export class MenuSheeshaListComponent implements OnInit {
 
   toggleSheeshaImages: boolean;
-
   items: MenuItemBaseModel[] = [];
-  sampleItem: MenuItemBaseModel;
-  sampleItem2: MenuItemBaseModel;
-  sampleItem3: MenuItemBaseModel;
-  sampleItem4: MenuItemBaseModel;
-  sampleItem5: MenuItemBaseModel;
+  errorMessage: string;
 
-  constructor(private store: Store<fromMenu.State>) {}
+  constructor(private store: Store<fromMenu.State>, private menuService: MenuService) {}
 
   ngOnInit() {
     // TODO: Unsubscribe
@@ -32,6 +28,16 @@ export class MenuSheeshaListComponent implements OnInit {
     /* Same as above but without using selectors */
     // this.store.pipe(select('menu')).subscribe(
     //   menu => this.toggleSheeshaImages = menu.displaySheeshaImages
+    // );
+
+    // Get Menu Items
+    this.store.dispatch(new menuActions.Load());
+    this.store.pipe(select(fromMenu.getAllSheeshaMenuItems))
+      .subscribe((menuItems: MenuItemBaseModel[]) => this.items = menuItems);
+
+    // this.menuService.getAllSheeshaItems().subscribe(
+    //   (menuItems: MenuItemBaseModel[]) => this.items = menuItems,
+    //   (err: any) => this.errorMessage = err.error
     // );
   }
 
