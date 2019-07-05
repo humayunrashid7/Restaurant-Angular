@@ -51,7 +51,7 @@ export class LoadSuccess implements Action {
 export class LoadFail implements Action {
   readonly type = MenuActionTypes.LoadFail;
 
-  constructor(public payload: String) {}
+  constructor(public payload: string) {}
 }
 
 export type MenuActions = ToggleSheeshaImages

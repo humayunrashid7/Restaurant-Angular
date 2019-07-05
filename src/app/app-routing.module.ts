@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: './auth/auth.module#AuthModule'
+    loadChildren: './core/auth/auth.module#AuthModule'
   },
   {
     path: '',

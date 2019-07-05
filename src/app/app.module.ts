@@ -16,15 +16,18 @@ import {MatCheckboxModule, MatListModule} from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 
 /* AuthService */
-import {AuthGuardService} from './auth/auth-guard.service';
-import {AuthService} from './auth/auth.service';
+import {AuthGuardService} from './core/auth/auth-guard.service';
+import {AuthService} from './core/auth/auth.service';
 
 /* NgRx */
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {EffectsModule} from '@ngrx/effects';
-import {HttpClientModule} from '@angular/common/http';
+
+/* Interceptors */
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpErrorInterceptor} from './core/interceptors/http-error.interceptor';
 
 
 
@@ -56,7 +59,15 @@ import {HttpClientModule} from '@angular/common/http';
     MatCheckboxModule,
     LayoutModule
   ],
-  providers: [AuthGuardService, AuthService],
+  providers: [
+    AuthGuardService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

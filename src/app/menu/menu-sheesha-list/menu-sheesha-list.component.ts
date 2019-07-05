@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MenuItemBaseModel} from '../menu-item/menu-item.model';
 import {select, Store} from '@ngrx/store';
 import * as fromMenu from '../state/menu.reducer';
 import * as menuActions from '../state/menu.actions';
-import {MenuService} from '../menu.service';
+import {takeWhile} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-menu-sheesha-list',
   templateUrl: './menu-sheesha-list.component.html',
   styleUrls: ['./menu-sheesha-list.component.css']
 })
-export class MenuSheeshaListComponent implements OnInit {
+export class MenuSheeshaListComponent implements OnInit, OnDestroy {
 
   toggleSheeshaImages: boolean;
   items: MenuItemBaseModel[] = [];
-  errorMessage: string;
+  componentActive = true;
+  errorMessage$: Observable<string>;
 
-  constructor(private store: Store<fromMenu.State>, private menuService: MenuService) {}
+  constructor(private store: Store<fromMenu.State>) {}
 
   ngOnInit() {
     // TODO: Unsubscribe
@@ -31,14 +33,20 @@ export class MenuSheeshaListComponent implements OnInit {
     // );
 
     // Get Menu Items
+    this.errorMessage$ = this.store.pipe(select(fromMenu.getError));
     this.store.dispatch(new menuActions.Load());
-    this.store.pipe(select(fromMenu.getAllSheeshaMenuItems))
+    this.store.pipe(select(fromMenu.getAllSheeshaMenuItems),
+      takeWhile(() => this.componentActive))
       .subscribe((menuItems: MenuItemBaseModel[]) => this.items = menuItems);
 
     // this.menuService.getAllSheeshaItems().subscribe(
     //   (menuItems: MenuItemBaseModel[]) => this.items = menuItems,
     //   (err: any) => this.errorMessage = err.error
     // );
+  }
+
+  ngOnDestroy(): void {
+    this.componentActive = false;
   }
 
   checkChanged(value: boolean): void {

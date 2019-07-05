@@ -3,6 +3,60 @@ import * as fromRoot from '../../state/app.state';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {MenuActions, MenuActionTypes} from './menu.actions';
 
+export interface MenuState {
+  displaySheeshaImages: boolean;
+  currentSheeshaProduct: MenuItemBaseModel;
+  allSheeshaMenuItems: MenuItemBaseModel[];
+  allFoodMenuItems: MenuItemBaseModel[];
+  allDrinksMenuItems: MenuItemBaseModel[];
+  error: string;
+}
+
+export interface State extends fromRoot.State {
+  menu: MenuState;
+}
+
+const initialState: MenuState = {
+  displaySheeshaImages: true,
+  currentSheeshaProduct: null,
+  allDrinksMenuItems: [],
+  allFoodMenuItems: [],
+  allSheeshaMenuItems: [],
+  error: ''
+}
+
+const getMenuFeatureState = createFeatureSelector<MenuState>('menu');
+
+export const getDisplaySheeshaImages = createSelector(
+  getMenuFeatureState,
+  state => state.displaySheeshaImages
+);
+
+export const getCurrentSheeshaProduct = createSelector(
+  getMenuFeatureState,
+  state => state.currentSheeshaProduct
+);
+
+export const getAllDrinksMenuItems = createSelector(
+  getMenuFeatureState,
+  state => state.allDrinksMenuItems
+);
+
+export const getAllFoodMenuItems = createSelector(
+  getMenuFeatureState,
+  state => state.allFoodMenuItems
+);
+
+export const getAllSheeshaMenuItems = createSelector(
+  getMenuFeatureState,
+  state => state.allSheeshaMenuItems
+);
+
+export const getError = createSelector(
+  getMenuFeatureState,
+  state => state.error
+);
+
 export function reducer(state: MenuState = initialState, action: MenuActions): MenuState {
   switch (action.type) {
 
@@ -43,7 +97,15 @@ export function reducer(state: MenuState = initialState, action: MenuActions): M
     case MenuActionTypes.LoadSuccess:
       return {
         ...state,
-        allSheeshaMenuItems: action.payload
+        allSheeshaMenuItems: action.payload,
+        error: ''
+      };
+
+    case MenuActionTypes.LoadFail:
+      return {
+        ...state,
+        allSheeshaMenuItems: [],
+        error: action.payload
       };
 
     default:
@@ -66,50 +128,3 @@ export function reducer(state: MenuState = initialState, action): MenuState {
   }
 }
 */
-
-export interface MenuState {
-  displaySheeshaImages: boolean;
-  currentSheeshaProduct: MenuItemBaseModel;
-  allSheeshaMenuItems: MenuItemBaseModel[];
-  allFoodMenuItems: MenuItemBaseModel[];
-  allDrinksMenuItems: MenuItemBaseModel[];
-}
-
-export interface State extends fromRoot.State {
-  menu: MenuState;
-}
-
-const initialState: MenuState = {
-  displaySheeshaImages: true,
-  currentSheeshaProduct: null,
-  allDrinksMenuItems: [],
-  allFoodMenuItems: [],
-  allSheeshaMenuItems: []
-}
-
-const getMenuFeatureState = createFeatureSelector<MenuState>('menu');
-
-export const getDisplaySheeshaImages = createSelector(
-  getMenuFeatureState,
-  state => state.displaySheeshaImages
-);
-
-export const getCurrentSheeshaProduct = createSelector(
-  getMenuFeatureState,
-  state => state.currentSheeshaProduct
-);
-
-export const getAllDrinksMenuItems = createSelector(
-  getMenuFeatureState,
-  state => state.allDrinksMenuItems
-);
-
-export const getAllFoodMenuItems = createSelector(
-  getMenuFeatureState,
-  state => state.allFoodMenuItems
-);
-
-export const getAllSheeshaMenuItems = createSelector(
-  getMenuFeatureState,
-  state => state.allSheeshaMenuItems
-);

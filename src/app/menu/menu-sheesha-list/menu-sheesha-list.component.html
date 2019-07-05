@@ -35,4 +35,8 @@
 
 </mat-grid-list>
 
+<div *ngIf="errorMessage$ | async as errorMessage" class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>
+
 

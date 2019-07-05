@@ -4,7 +4,7 @@ import {MenuSidebarComponent} from './menu-sidebar/menu-sidebar.component';
 import {MenuSheeshaListComponent} from './menu-sheesha-list/menu-sheesha-list.component';
 import {MenuDrinksListComponent} from './menu-drinks-list/menu-drinks-list.component';
 import {MenuFoodListComponent} from './menu-food-list/menu-food-list.component';
-import {AuthGuardService} from '../auth/auth-guard.service';
+import {AuthGuardService} from '../core/auth/auth-guard.service';
 
 const routes: Routes = [
   {
