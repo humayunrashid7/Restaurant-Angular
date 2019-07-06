@@ -1,11 +1,11 @@
-import {MenuItemBaseModel} from '../menu-item/menu-item.model';
+import {MenuItemBaseModel} from '../../core/models/menu-item.model';
 import * as fromRoot from '../../state/app.state';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {MenuActions, MenuActionTypes} from './menu.actions';
 
 export interface MenuState {
   displaySheeshaImages: boolean;
-  currentSheeshaProduct: MenuItemBaseModel;
+  currentSheeshaId: number;
   allSheeshaMenuItems: MenuItemBaseModel[];
   allFoodMenuItems: MenuItemBaseModel[];
   allDrinksMenuItems: MenuItemBaseModel[];
@@ -18,7 +18,7 @@ export interface State extends fromRoot.State {
 
 const initialState: MenuState = {
   displaySheeshaImages: true,
-  currentSheeshaProduct: null,
+  currentSheeshaId: null,
   allDrinksMenuItems: [],
   allFoodMenuItems: [],
   allSheeshaMenuItems: [],
@@ -32,9 +32,28 @@ export const getDisplaySheeshaImages = createSelector(
   state => state.displaySheeshaImages
 );
 
+export const getCurrentSheeshaId = createSelector(
+  getMenuFeatureState,
+  state => state.currentSheeshaId
+);
+
 export const getCurrentSheeshaProduct = createSelector(
   getMenuFeatureState,
-  state => state.currentSheeshaProduct
+  getCurrentSheeshaId,
+  (state, currentSheeshaId) => {
+    if (currentSheeshaId === 0) {
+      return {
+        id: 0,
+        type: 0,
+        name: '',
+        imageUrl: '',
+        description: '',
+        price: 0.00
+      };
+    } else {
+      return currentSheeshaId ? state.allSheeshaMenuItems.find(x => x.id === currentSheeshaId) : null;
+    }
+  }
 );
 
 export const getAllDrinksMenuItems = createSelector(
@@ -69,29 +88,19 @@ export function reducer(state: MenuState = initialState, action: MenuActions): M
     case MenuActionTypes.SetCurrentSheeshaProduct:
       return {
         ...state,
-        currentSheeshaProduct: {...action.payload}
-        /* create copy of action to prevent mutation of the object
-           in the store. Explained in Module 7: Demo: Using Strongly Typed Actions
-          of Deobrah Kurata Pluralsight Course*/
+        currentSheeshaId: action.payload.id
       };
 
     case MenuActionTypes.ClearCurrentSheeshaProduct:
       return {
         ...state,
-        currentSheeshaProduct: null
+        currentSheeshaId: null
       };
 
     case MenuActionTypes.InitializeCurrentSheeshaProduct:
       return {
         ...state,
-        currentSheeshaProduct: {
-          id: 0,
-          type: 0,
-          name: '',
-          imageUrl: '',
-          description: '',
-          price: 0.00
-        }
+        currentSheeshaId: 0
       };
 
     case MenuActionTypes.LoadSuccess:

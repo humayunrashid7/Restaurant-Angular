@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {MenuItemBaseModel} from './menu-item/menu-item.model';
+import {MenuItemBaseModel} from '../models/menu-item.model';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 
@@ -9,7 +9,7 @@ import {catchError, tap} from 'rxjs/operators';
 })
 export class MenuService {
 
-  sheeshaMenuUrl = 'http://localhost:4200/assets/data1.json';
+  sheeshaMenuUrl = 'http://localhost:4200/assets/data.json';
 
   constructor(private http: HttpClient) {}
 

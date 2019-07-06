@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {MenuItemBaseModel} from '../menu-item/menu-item.model';
+import {MenuItemBaseModel} from '../../core/models/menu-item.model';
 
 export enum MenuActionTypes {
   ToggleSheeshaImages = '[Menu] Toggle Sheesha Images',
@@ -8,7 +8,10 @@ export enum MenuActionTypes {
   InitializeCurrentSheeshaProduct = '[Menu] Initialize Current Sheesha Product',
   Load = '[Menu] Load',
   LoadSuccess = '[Menu] Load Success',
-  LoadFail = '[Menu] Load Fail'
+  LoadFail = '[Menu] Load Fail',
+  UpdateSheeshaProduct = '[Menu-Sheesha] Update Sheesha Product',
+  UpdateSheeshaProductSuccess = '[Menu-Sheesha] Update Sheesha Product Success',
+  UpdateSheeshaProductFail = '[Menu-Sheesha] Update Sheesha Product Fail'
 }
 
 export class ToggleSheeshaImages implements Action {
@@ -54,10 +57,31 @@ export class LoadFail implements Action {
   constructor(public payload: string) {}
 }
 
+export class UpdateSheeshaProduct implements Action {
+  readonly type = MenuActionTypes.UpdateSheeshaProduct;
+
+  constructor(public payload: MenuItemBaseModel[]) {}
+}
+
+export class UpdateSheeshaProductSuccess implements Action {
+  readonly type = MenuActionTypes.UpdateSheeshaProductSuccess;
+
+  constructor(public payload: MenuItemBaseModel[]) {}
+}
+
+export class UpdateSheeshaProductFail implements Action {
+  readonly type = MenuActionTypes.UpdateSheeshaProductFail;
+
+  constructor(public payload: string) {}
+}
+
 export type MenuActions = ToggleSheeshaImages
   | SetCurrentSheeshaProduct
   | ClearCurrentSheeshaProduct
   | InitializeCurrentSheeshaProduct
   | Load
   | LoadSuccess
-  | LoadFail;
+  | LoadFail
+  | UpdateSheeshaProduct
+  | UpdateSheeshaProductSuccess
+  | UpdateSheeshaProductFail;

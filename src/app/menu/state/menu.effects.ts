@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {MenuService} from '../menu.service';
+import {MenuService} from '../../core/services/menu.service';
 import * as menuActions from './menu.actions';
 import {mergeMap, map, catchError} from 'rxjs/operators';
-import {MenuItemBaseModel} from '../menu-item/menu-item.model';
+import {MenuItemBaseModel} from '../../core/models/menu-item.model';
 import {of} from 'rxjs';
 
 @Injectable()

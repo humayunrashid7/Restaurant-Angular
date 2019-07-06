@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {MenuItemBaseModel} from '../menu-item/menu-item.model';
+import {MenuItemBaseModel} from '../../core/models/menu-item.model';
 import {select, Store} from '@ngrx/store';
 import * as fromMenu from '../state/menu.reducer';
 import * as menuActions from '../state/menu.actions';
